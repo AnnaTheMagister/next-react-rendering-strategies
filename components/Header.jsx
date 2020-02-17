@@ -1,21 +1,21 @@
 import Link from 'next/link';
-
-const linkStyle = {
-    marginRight: 15
-};
+import { AppBar, Toolbar, Button } from '@material-ui/core';
+import blue from '@material-ui/core/colors/blue';
 
 const Header = () => (
-    <div>
-        <Link href="/">
-            <a style={ linkStyle }>Home</a>
-        </Link>
-        <Link href="/about">
-            <a style={ linkStyle }>About</a>
-        </Link>
-        <Link href="/quotes">
-            <a style={ linkStyle }>Quotes</a>
-        </Link>
-    </div>
+    <AppBar position="static" color="default">
+        <Toolbar variant="dense">
+            <Link href="/">
+                <Button variant="outlined" color="primary">SSR</Button>
+            </Link>
+            <Link href="/client-side-rendering">
+                <Button variant="outlined" color="primary">CSR</Button>
+            </Link>
+            <Link href="/quotes">
+                <Button variant="outlined" color="primary">Quotes</Button>
+            </Link>
+        </Toolbar>
+    </AppBar>
 );
 
 export default Header;
