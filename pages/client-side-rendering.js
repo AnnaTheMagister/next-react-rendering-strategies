@@ -1,10 +1,19 @@
-import Layout from "../components/MyLayout";
+import React, { useEffect } from "react";
+import { connect } from "react-redux";
 
-const ClientSideRendering = () =>
-  typeof window !== "undefined" ? (
-    <p>This is the about page</p>
-  ) : (
-    ""
-  );
+import { loadFullList } from "../actions";
+import Page from "../components/page";
 
-export default ClientSideRendering;
+const ClientSideRenderingComponent = ({ onLoadFullList }) => {
+  useEffect(() => {
+    onLoadFullList();
+  });
+  return <Page title="Client Side Rendering" />;
+};
+ClientSideRenderingComponent.getInitialProps = () => {
+  return { renderOnClient: true };
+}
+
+export default connect(null, { 
+  onLoadFullList: loadFullList
+})(ClientSideRenderingComponent);

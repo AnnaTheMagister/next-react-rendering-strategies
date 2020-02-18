@@ -1,21 +1,30 @@
-import React from "react";
+import React, { useEffect } from "react";
+import Link from "next/link";
 import { connect } from "react-redux";
 
-import { loadData } from "../actions";
-import Page from "../components/page";
+import { clearState } from "../actions";
+import { Button } from "@material-ui/core";
 
-const Index = () => {
-  return <Page title="Server Side Rendering" />;
+const examples = [
+  { title: "SSR with rehydration", url: "/server-side-rendering" },
+  { title: "Client Side Rendering", url: "/client-side-rendering" }
+];
+
+const Index = ({ onClearState }) => {
+  useEffect(() => {
+    onClearState();
+  });
+  return (
+    <React.Fragment>
+      {examples.map(example => (
+        <Link href={example.url}>
+          <Button color="primary">{example.title}</Button>
+        </Link>
+      ))}
+    </React.Fragment>
+  );
 };
 
-Index.getInitialProps = async (props) => {
-  const { store, isServer } = props.ctx;
-
-  if (!store.getState().placeholderData) {
-    store.dispatch(loadData());
-  }
-
-  return { isServer };
-}
-
-export default connect()(Index);
+export default connect(null, {
+  onClearState: clearState
+})(Index);

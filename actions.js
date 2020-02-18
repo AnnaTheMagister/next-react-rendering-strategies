@@ -1,23 +1,30 @@
 export const actionTypes = {
-  FAILURE: "FAILURE",
-  LOAD_DATA: "LOAD_DATA",
-  LOAD_DATA_SUCCESS: "LOAD_DATA_SUCCESS"
+  LOAD_FULL_LIST: "LOAD_FULL_LIST",
+  LOAD_FULL_LIST_SUCCESS: "LOAD_FULL_LIST_SUCCESS",
+  LOAD_FULL_LIST_ERROR: "LOAD_FULL_LIST_ERROR",
+  CLEAR_STATE: "CLEAR_STATE",
 };
 
-export function failure(error) {
+export function loadFullListError(error) {
   return {
-    type: actionTypes.FAILURE,
+    type: actionTypes.LOAD_FULL_LIST_ERROR,
     error
   };
 }
 
-export function loadData() {
-  return { type: actionTypes.LOAD_DATA };
+export function loadFullList() {
+  return { type: actionTypes.LOAD_FULL_LIST };
 }
 
-export function loadDataSuccess(data) {
+export function loadFullListSuccess(data) {
   return {
-    type: actionTypes.LOAD_DATA_SUCCESS,
+    type: actionTypes.LOAD_FULL_LIST_SUCCESS,
     data
+  };
+}
+
+export function clearState() {
+  return {
+    type: actionTypes.CLEAR_STATE
   };
 }

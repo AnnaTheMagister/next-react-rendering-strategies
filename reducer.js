@@ -7,16 +7,22 @@ export const exampleInitialState = {
 
 function reducer(state = exampleInitialState, action) {
   switch (action.type) {
-    case actionTypes.FAILURE:
+    case actionTypes.LOAD_FULL_LIST_ERROR:
       return {
         ...state,
         ...{ error: action.error }
       };
 
-    case actionTypes.LOAD_DATA_SUCCESS:
+    case actionTypes.LOAD_FULL_LIST_SUCCESS:
       return {
         ...state,
         ...{ placeholderData: action.data }
+      };
+
+    case actionTypes.CLEAR_STATE:
+      return {
+        error: false,
+        placeholderData: null
       };
 
     default:

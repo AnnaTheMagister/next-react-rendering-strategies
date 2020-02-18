@@ -20,7 +20,7 @@ class MyApp extends App {
 
   render() {
     const { Component, pageProps, store } = this.props;
-    return (
+    return pageProps && pageProps.renderOnClient && (typeof window === 'undefined') ? '' : (
       <Provider store={store}>
         <Layout>
           <Component {...pageProps} />

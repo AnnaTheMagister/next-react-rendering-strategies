@@ -1,11 +1,12 @@
 import Link from "next/link";
 import { connect } from "react-redux";
 import ShowCard from "./ShowCard";
+import { Typography } from "@material-ui/core";
 
 function Page({ error, placeholderData, title }) {
   return (
     <div>
-      <h1>{title}</h1>
+      <Typography variant="h4">{title}</Typography>
       <div
         style={{
           display: "flex",
@@ -16,8 +17,8 @@ function Page({ error, placeholderData, title }) {
         }}
       >
         {placeholderData &&
-          placeholderData.map(item => (
-            <ShowCard showInfo={item} key={item.show.id} />
+          placeholderData.map(show => (
+            <ShowCard show={show} key={show.id} />
           ))}
         {error && <p style={{ color: "red" }}>Error: {error.message}</p>}
       </div>
