@@ -19,7 +19,7 @@ const Index = ({ onClearState }) => {
   return (
     <React.Fragment>
       {examples.map(example => (
-        <Link href={example.url}>
+        <Link href={example.url} key={example.url}>
           <Button color="primary">{example.title}</Button>
         </Link>
       ))}
