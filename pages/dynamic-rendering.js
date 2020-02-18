@@ -11,7 +11,7 @@ const bots = [
 ];
 
 
-const SEODynamicRendering = ({ placeholderData, error, isServerBot }) => {
+const DynamicRenderingPage = ({ placeholderData, error, isServerBot }) => {
   const isClientBot = typeof window !== "undefined" && bots.includes(window.navigator.userAgent);
   return (
     <div>
@@ -41,15 +41,15 @@ const SEODynamicRendering = ({ placeholderData, error, isServerBot }) => {
   );
 };
 
-SEODynamicRendering.getInitialProps = async props => {
+DynamicRenderingPage.getInitialProps = async props => {
   const { store, req } = props.ctx;
-  const isServerBot = req && bots.includes(req.headers['user-agent']);
+  const isRequestedFromBot = req && bots.includes(req.headers['user-agent']);
 
   if (!store.getState().placeholderData) {
     store.dispatch(loadFullList());
   }
 
-  return { isServerBot };
+  return { isRequestedFromBot };
 };
 
-export default connect(state => state)(SEODynamicRendering);
+export default connect(state => state)(DynamicRenderingPage);
