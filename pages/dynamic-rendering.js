@@ -11,7 +11,7 @@ const bots = [
 ];
 
 
-const DynamicRenderingPage = ({ placeholderData, error, isServerBot }) => {
+const DynamicRenderingPage = ({ placeholderData, error, isRequestedFromBot }) => {
   const isClientBot = typeof window !== "undefined" && bots.includes(window.navigator.userAgent);
   return (
     <div>
@@ -29,7 +29,7 @@ const DynamicRenderingPage = ({ placeholderData, error, isServerBot }) => {
           placeholderData.map((show, idx) => (
             <DynamicRendering
               key={show.id}
-              isBot={isServerBot || isClientBot}
+              isBot={isRequestedFromBot || isClientBot}
               force={idx < 3}
             >
               <ShowCard show={show} />
