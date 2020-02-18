@@ -4,16 +4,16 @@ import { connect } from "react-redux";
 import { loadFullList } from "../actions";
 import Page from "../components/page";
 
-const ClientSideRenderingComponent = ({ onLoadFullList }) => {
+const ClientSideRendering = ({ onLoadFullList }) => {
   useEffect(() => {
     onLoadFullList();
   });
   return <Page title="Client Side Rendering" />;
 };
-ClientSideRenderingComponent.getInitialProps = () => {
+ClientSideRendering.getInitialProps = () => {
   return { renderOnClient: true };
 }
 
 export default connect(null, { 
   onLoadFullList: loadFullList
-})(ClientSideRenderingComponent);
+})(ClientSideRendering);

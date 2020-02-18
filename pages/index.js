@@ -7,7 +7,8 @@ import { Button } from "@material-ui/core";
 
 const examples = [
   { title: "SSR with rehydration", url: "/server-side-rendering" },
-  { title: "Client Side Rendering", url: "/client-side-rendering" }
+  { title: "Client Side Rendering", url: "/client-side-rendering" },
+  { title: "Dynamic Rendering", url: "/dynamic-rendering" },
 ];
 
 const Index = ({ onClearState }) => {

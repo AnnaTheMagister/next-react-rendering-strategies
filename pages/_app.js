@@ -7,6 +7,8 @@ import withReduxSaga from "next-redux-saga";
 import createStore from "../store";
 import Layout from "../components/MyLayout";
 
+const isServer = !process.browser;
+
 class MyApp extends App {
   static async getInitialProps({ Component, ctx }) {
     let pageProps = {};
@@ -20,7 +22,7 @@ class MyApp extends App {
 
   render() {
     const { Component, pageProps, store } = this.props;
-    return pageProps && pageProps.renderOnClient && (typeof window === 'undefined') ? '' : (
+    return pageProps && pageProps.renderOnClient && isServer ? '' : (
       <Provider store={store}>
         <Layout>
           <Component {...pageProps} />

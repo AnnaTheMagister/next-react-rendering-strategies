@@ -4,7 +4,6 @@ import "isomorphic-unfetch";
 
 import { actionTypes, loadFullListError, loadFullListSuccess } from "./actions";
 import { showList } from "./pages/api/showList";
-import useSWR from "swr";
 
 const localhost = 'http://localhost:3000';
 
