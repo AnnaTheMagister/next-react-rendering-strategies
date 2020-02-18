@@ -42,8 +42,8 @@ const SEODynamicRendering = ({ placeholderData, error, isServerBot }) => {
 };
 
 SEODynamicRendering.getInitialProps = async props => {
-  const { store } = props.ctx;
-  const isServerBot = bots.includes(props.ctx.req.headers['user-agent']);
+  const { store, req } = props.ctx;
+  const isServerBot = req && bots.includes(req.headers['user-agent']);
 
   if (!store.getState().placeholderData) {
     store.dispatch(loadFullList());

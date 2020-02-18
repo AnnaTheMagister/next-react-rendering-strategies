@@ -9,6 +9,7 @@ const examples = [
   { title: "SSR with rehydration", url: "/server-side-rendering" },
   { title: "Client Side Rendering", url: "/client-side-rendering" },
   { title: "Dynamic Rendering", url: "/dynamic-rendering" },
+  { title: "Progressive Hydration", url: "/progressive-hydration" },
 ];
 
 const Index = ({ onClearState }) => {
